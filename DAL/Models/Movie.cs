@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DAL.Models
 {
-    class Movie
+    public class Movie
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace DAL
 {
-    class MovieBaseContext : DbContext
+    public class MovieBaseContext : DbContext
     {
         public MovieBaseContext(DbContextOptions options) : base(options)
         {
