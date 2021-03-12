@@ -14,5 +14,6 @@ namespace DAL.Models
         public int Duration { get; set; }
 
         public ICollection<Display> Displays { get; set; }
+        public MovieImage Image { get; set; }
     }
 }
