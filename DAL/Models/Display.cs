@@ -14,6 +14,7 @@ namespace DAL.Models
         public DateTime DisplayDate { get; set; }
 
         public Movie Movie { get; set; }
-
+        public SourceTypeId SourceTypeId { get; set; }
+        public SourceType SourceType { get; set; }
     }
 }
