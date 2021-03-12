@@ -17,16 +17,19 @@ namespace DAL
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Display> Displays { get; set; }
         public DbSet<SourceType> SourceTypes { get; set; }
-        public DbSet<Movie> MovieImages { get; set; }
+        public DbSet<MovieImage> MovieImages { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+
             modelBuilder.Entity<Display>()
                 .Property(p => p.SourceTypeId).HasConversion<int>();
 
             modelBuilder.Entity<SourceType>()
                 .Property(p => p.SourceTypeId).HasConversion<int>();
 
+            //Enum handling
             modelBuilder
            .Entity<SourceType>().HasData(
                Enum.GetValues(typeof(SourceTypeId))
