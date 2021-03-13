@@ -38,6 +38,7 @@ namespace MovieBase
             services.AddTransient<IMoviesRepository, MoviesRepository>();
             services.AddTransient<IDisplaysRepository, DisplaysRepository>();
             services.AddTransient<IMovieService, MovieService>();
+            services.AddTransient<IDisplayService, DisplayService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

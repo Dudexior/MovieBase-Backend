@@ -3,7 +3,7 @@ using System;
 
 namespace Service.DTO
 {
-    class DisplayDTO
+    public class DisplayDTO
     {
         public long Id { get; set; }
         public long MovieId { get; set; }
