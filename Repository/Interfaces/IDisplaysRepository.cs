@@ -9,5 +9,6 @@ namespace Repository.Interfaces
     public interface IDisplaysRepository
     {
         IQueryable<Display> GetDisplaysForMovie(long movieId);
+        void InsertDisplay(Display newDisplay);
     }
 }

@@ -20,5 +20,11 @@ namespace Repository
         {
             return _dbContext.Displays.Where(display => display.Movie.Id == movieId);
         }
+
+        public void InsertDisplay(Display newDisplay)
+        {
+            _dbContext.Displays.AddAsync(newDisplay);
+            _dbContext.SaveChanges();
+        }
     }
 }
