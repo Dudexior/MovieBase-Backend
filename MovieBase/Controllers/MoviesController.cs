@@ -17,35 +17,35 @@ namespace MovieBase.Controllers
             _movieService = movieService;
         }
 
-        // GET: api/<MoviesController>
+        // GET: <MoviesController>
         [HttpGet]
         public IQueryable<MovieDTO> Get()
         {
             return _movieService.GetAllMovies();
         }
 
-        // GET api/<MoviesController>/5
+        // GET <MoviesController>/5
         [HttpGet("{id}")]
         public MovieDTO Get(long id)
         {
             return _movieService.GetSingleMovie(id).FirstOrDefault();
         }
 
-        // POST api/<MoviesController>
+        // POST <MoviesController>
         [HttpPost]
         public IActionResult Post([FromBody] MovieDTO movie)
         {
             return StatusCode(501);
         }
 
-        // PATCH api/<MoviesController>/5
+        // PATCH <MoviesController>/5
         [HttpPatch("{id}")]
         public IActionResult Put(long id, [FromBody] MovieDTO movie)
         {
             return StatusCode(501);
         }
 
-        // DELETE api/<MoviesController>/5
+        // DELETE <MoviesController>/5
         [HttpDelete("{id}")]
         public IActionResult Delete(long id)
         {
