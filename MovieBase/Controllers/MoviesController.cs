@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DAL.Models;
+using Microsoft.AspNetCore.Mvc;
+using Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,11 +14,17 @@ namespace MovieBase.Controllers
     [ApiController]
     public class MoviesController : ControllerBase
     {
+        private readonly IMoviesRepository _moviesRepository;
+        public MoviesController(IMoviesRepository moviesRepository)
+        {
+            _moviesRepository = moviesRepository;
+        }
+
         // GET: api/<MoviesController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IQueryable<Movie> Get()
         {
-            return new string[] { "value1", "value2" };
+            return _moviesRepository.GetAllMovies();
         }
 
         // GET api/<MoviesController>/5
