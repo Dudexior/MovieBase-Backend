@@ -7,11 +7,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieBase", "MovieBase\Movi
 	ProjectSection(ProjectDependencies) = postProject
 		{540C402B-4A37-4A73-B231-780EFDD25998} = {540C402B-4A37-4A73-B231-780EFDD25998}
 		{642B0163-38E9-456F-A3FA-78D37BD2F594} = {642B0163-38E9-456F-A3FA-78D37BD2F594}
+		{365C9FA6-97E0-4E9F-94A6-A77D34958854} = {365C9FA6-97E0-4E9F-94A6-A77D34958854}
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL", "DAL\DAL.csproj", "{540C402B-4A37-4A73-B231-780EFDD25998}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Repository.csproj", "{642B0163-38E9-456F-A3FA-78D37BD2F594}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repository", "Repository\Repository.csproj", "{642B0163-38E9-456F-A3FA-78D37BD2F594}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "Service\Service.csproj", "{365C9FA6-97E0-4E9F-94A6-A77D34958854}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +34,10 @@ Global
 		{642B0163-38E9-456F-A3FA-78D37BD2F594}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{642B0163-38E9-456F-A3FA-78D37BD2F594}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{642B0163-38E9-456F-A3FA-78D37BD2F594}.Release|Any CPU.Build.0 = Release|Any CPU
+		{365C9FA6-97E0-4E9F-94A6-A77D34958854}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{365C9FA6-97E0-4E9F-94A6-A77D34958854}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{365C9FA6-97E0-4E9F-94A6-A77D34958854}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{365C9FA6-97E0-4E9F-94A6-A77D34958854}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
