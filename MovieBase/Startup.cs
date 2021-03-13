@@ -1,3 +1,4 @@
+using AutoMapper;
 using DAL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -10,6 +11,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Repository;
 using Repository.Interfaces;
+using Service;
+using Service.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,7 +37,7 @@ namespace MovieBase
 
             services.AddTransient<IMoviesRepository, MoviesRepository>();
             services.AddTransient<IDisplaysRepository, DisplaysRepository>();
-
+            services.AddTransient<IMovieService, MovieService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
