@@ -15,8 +15,14 @@ namespace Service
         public DisplayService(IDisplaysRepository displaysRepository)
         {
             var config = new MapperConfiguration(cfg =>
-              cfg.CreateMap<Display, DisplayDTO>()
-              .ForMember(dest => dest.MovieId, opt => opt.MapFrom(src => src.Movie.Id))
+            {
+                cfg.CreateMap<Display, DisplayDTO>()
+                    .ForMember(dest => dest.MovieId, opt => opt.MapFrom(src => src.Movie.Id));
+
+                cfg.CreateMap<DisplayDTO, Display>();
+            }
+              
+             
             );
 
             _displaysRepository = displaysRepository;
@@ -34,6 +40,14 @@ namespace Service
             }
 
             return response;
+        }
+
+        public void AddDisplay(long movieId, SourceTypeId source)
+        {
+            DisplayDTO displayToAdd = new DisplayDTO(movieId, source);
+
+            _displaysRepository.InsertDisplay(_mapper.Map<Display>(displayToAdd));
+                
         }
     }
 }
