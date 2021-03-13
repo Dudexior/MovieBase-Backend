@@ -33,6 +33,8 @@ namespace MovieBase
             services.AddControllers();
 
             services.AddTransient<IMoviesRepository, MoviesRepository>();
+            services.AddTransient<IDisplaysRepository, DisplaysRepository>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
