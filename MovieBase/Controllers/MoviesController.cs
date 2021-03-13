@@ -1,10 +1,7 @@
-﻿using DAL.Models;
-using Microsoft.AspNetCore.Mvc;
-using Repository.Interfaces;
-using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Mvc;
+using Service.DTO;
+using Service.Interfaces;
 using System.Linq;
-using System.Threading.Tasks;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -14,43 +11,45 @@ namespace MovieBase.Controllers
     [ApiController]
     public class MoviesController : ControllerBase
     {
-        private readonly IMoviesRepository _moviesRepository;
-        public MoviesController(IMoviesRepository moviesRepository)
+        private readonly IMovieService _movieService;
+        public MoviesController(IMovieService movieService)
         {
-            _moviesRepository = moviesRepository;
+            _movieService = movieService;
         }
 
         // GET: api/<MoviesController>
         [HttpGet]
-        public IQueryable<Movie> Get()
+        public IQueryable<MovieDTO> Get()
         {
-            return _moviesRepository.GetAllMovies();
+            return _movieService.GetAllMovies();
         }
 
         // GET api/<MoviesController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public MovieDTO Get(long id)
         {
-            return "value";
+            return _movieService.GetSingleMovie(id).FirstOrDefault();
         }
 
         // POST api/<MoviesController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Post([FromBody] MovieDTO movie)
         {
+            return StatusCode(501);
         }
 
         // PATCH api/<MoviesController>/5
         [HttpPatch("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult Put(long id, [FromBody] MovieDTO movie)
         {
+            return StatusCode(501);
         }
 
         // DELETE api/<MoviesController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(long id)
         {
-           
+            return StatusCode(501);
         }
     }
 }
