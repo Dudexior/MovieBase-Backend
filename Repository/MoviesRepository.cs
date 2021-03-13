@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Repository
 {
-    class MoviesRepository : IMoviesRepository
+    public class MoviesRepository : IMoviesRepository
     {
         private readonly MovieBaseContext _dbContext;
         public MoviesRepository(MovieBaseContext dbContext)

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Repository.Interfaces
 {
-    interface IMoviesRepository
+    public interface IMoviesRepository
     {
         IQueryable<Movie> GetAllMovies();
         IQueryable<Movie> GetSingleMovie(long id);
