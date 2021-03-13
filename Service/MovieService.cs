@@ -11,8 +11,9 @@ namespace Service
     public class MovieService : IMovieService
     {
         private readonly IMoviesRepository _moviesRepository;
+        private readonly IDisplayService _displayService;
         private readonly IMapper _mapper;
-        public MovieService(IMoviesRepository moviesRepository)
+        public MovieService(IMoviesRepository moviesRepository, IDisplayService displayService)
         {
             var config = new MapperConfiguration(cfg =>
               cfg.CreateMap<Movie, MovieDTO>()
@@ -20,6 +21,7 @@ namespace Service
             );
 
             _moviesRepository = moviesRepository;
+            _displayService = displayService;
             _mapper = new Mapper(config);
         }
 
@@ -30,6 +32,7 @@ namespace Service
         }
         public IQueryable<MovieDTO> GetSingleMovie(long id)
         {
+            _displayService.AddDisplay(id, SourceTypeId.Api);
             return _moviesRepository.GetSingleMovie(id).ProjectTo<MovieDTO>(_mapper.ConfigurationProvider);
         }
     }
