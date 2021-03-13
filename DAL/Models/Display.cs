@@ -13,6 +13,7 @@ namespace DAL.Models
         public long Id { get; set; }
         public DateTime DisplayDate { get; set; }
 
+        public long MovieId { get; set; }
         public Movie Movie { get; set; }
         public SourceTypeId SourceTypeId { get; set; }
         public SourceType SourceType { get; set; }
