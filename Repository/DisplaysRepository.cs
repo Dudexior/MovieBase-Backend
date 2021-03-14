@@ -24,7 +24,13 @@ namespace Repository
         public void InsertDisplay(Display newDisplay)
         {
             _dbContext.Displays.AddAsync(newDisplay);
-            _dbContext.SaveChanges();
+
+            // save changes returns exception when FK does not exist
+            try
+            {
+                _dbContext.SaveChanges();
+            } 
+            catch {}
         }
     }
 }
