@@ -9,5 +9,6 @@ namespace Service.Interfaces
         IQueryable<MovieDTO> GetAllMovies();
         IQueryable<MovieDTO> GetSingleMovie(long id, SourceTypeId source);
         Movie EditMovie(long id, MovieSimpleDTO editedMovie);
+        MovieDTO AddMovie(MovieSimpleDTO movieToAdd);
     }
 }

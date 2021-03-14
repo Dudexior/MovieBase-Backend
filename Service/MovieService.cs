@@ -54,5 +54,17 @@ namespace Service
 
             return movieToEdit;
         }
+
+        public MovieDTO AddMovie(MovieSimpleDTO movie)
+        {
+            Movie movieToAdd = new Movie()
+            {
+                Title = movie.Title,
+                Description = movie.Description,
+                Duration = movie.Duration
+            };
+
+            return _mapper.Map<MovieDTO>(_moviesRepository.InsertMovie(movieToAdd));
+        }
     }
 }
