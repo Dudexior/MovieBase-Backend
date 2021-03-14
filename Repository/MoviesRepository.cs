@@ -18,12 +18,12 @@ namespace Repository
 
         public IQueryable<Movie> GetAllMovies()
         {
-            return _dbContext.Movies;
+            return _dbContext.Movies.Where(movie => movie.Active == true);
         }
 
         public IQueryable<Movie> GetSingleMovie(long id)
         {
-            return _dbContext.Movies.Where(movie => movie.Id == id);
+            return GetAllMovies().Where(movie => movie.Id == id);
         }
 
         public Movie PatchMovie(Movie patchedMovie)
