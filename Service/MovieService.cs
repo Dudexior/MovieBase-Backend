@@ -30,9 +30,10 @@ namespace Service
         {
             return _moviesRepository.GetAllMovies().ProjectTo<MovieDTO>(_mapper.ConfigurationProvider);
         }
-        public IQueryable<MovieDTO> GetSingleMovie(long id)
+
+        public IQueryable<MovieDTO> GetSingleMovie(long id, SourceTypeId source)
         {
-            _displayService.AddDisplay(id, SourceTypeId.Api);
+            _displayService.AddDisplay(id, source);
             return _moviesRepository.GetSingleMovie(id).ProjectTo<MovieDTO>(_mapper.ConfigurationProvider);
         }
     }

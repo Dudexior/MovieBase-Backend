@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DAL.Models;
+using Microsoft.AspNetCore.Mvc;
 using Service.DTO;
 using Service.Interfaces;
+using System;
 using System.Linq;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -28,7 +30,9 @@ namespace MovieBase.Controllers
         [HttpGet("{id}")]
         public MovieDTO Get(long id)
         {
-            return _movieService.GetSingleMovie(id).FirstOrDefault();
+            SourceTypeId source = CheckSourceType();
+           
+            return _movieService.GetSingleMovie(id, source).FirstOrDefault();
         }
 
         // POST <MoviesController>
@@ -50,6 +54,19 @@ namespace MovieBase.Controllers
         public IActionResult Delete(long id)
         {
             return StatusCode(501);
+        }
+
+        private SourceTypeId CheckSourceType()
+        {
+            SourceTypeId response = SourceTypeId.Api;
+            string uiHeader = Request.Headers["FromUI"].ToString();
+
+            if (!String.IsNullOrWhiteSpace(uiHeader) && uiHeader.ToLower() == bool.TrueString.ToLower())
+            {
+                response = SourceTypeId.UI;
+            }
+
+            return response;
         }
     }
 }

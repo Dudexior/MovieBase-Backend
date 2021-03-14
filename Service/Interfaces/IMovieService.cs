@@ -1,4 +1,5 @@
-﻿using Service.DTO;
+﻿using DAL.Models;
+using Service.DTO;
 using System.Linq;
 
 namespace Service.Interfaces
@@ -6,6 +7,6 @@ namespace Service.Interfaces
     public interface IMovieService
     {
         IQueryable<MovieDTO> GetAllMovies();
-        IQueryable<MovieDTO> GetSingleMovie(long id);
+        IQueryable<MovieDTO> GetSingleMovie(long id, SourceTypeId source);
     }
 }
