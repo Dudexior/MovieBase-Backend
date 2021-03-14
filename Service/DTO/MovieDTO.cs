@@ -1,11 +1,8 @@
 ﻿namespace Service.DTO
 {
-    public class MovieDTO
+    public class MovieDTO : MovieSimpleDTO
     {
         public long Id { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public int Duration { get; set; }
         public byte[] Image { get; set; }
     }
 }
