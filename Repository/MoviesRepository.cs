@@ -31,5 +31,13 @@ namespace Repository
             _dbContext.Movies.Update(patchedMovie);
             _dbContext.SaveChangesAsync();
         }
+
+        public Movie InsertMovie(Movie movieToAdd)
+        {
+            var addedMovie = _dbContext.Movies.Add(movieToAdd);
+            _dbContext.SaveChanges();
+
+            return movieToAdd;
+        }
     }
 }
