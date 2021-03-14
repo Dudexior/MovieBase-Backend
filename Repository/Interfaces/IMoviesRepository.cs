@@ -10,5 +10,6 @@ namespace Repository.Interfaces
     {
         IQueryable<Movie> GetAllMovies();
         IQueryable<Movie> GetSingleMovie(long id);
+        void PatchMovie(Movie patchedMovie);
     }
 }

@@ -25,5 +25,11 @@ namespace Repository
         {
             return _dbContext.Movies.Where(movie => movie.Id == id);
         }
+
+        public void PatchMovie(Movie patchedMovie)
+        {
+            _dbContext.Movies.Update(patchedMovie);
+            _dbContext.SaveChangesAsync();
+        }
     }
 }

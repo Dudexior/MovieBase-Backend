@@ -44,9 +44,9 @@ namespace MovieBase.Controllers
 
         // PATCH <MoviesController>/5
         [HttpPatch("{id}")]
-        public IActionResult Put(long id, [FromBody] MovieDTO movie)
+        public Movie Put(long id, [FromBody] MovieSimpleDTO movie)
         {
-            return StatusCode(501);
+            return _movieService.EditMovie(id, movie);
         }
 
         // DELETE <MoviesController>/5
