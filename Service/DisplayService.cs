@@ -31,7 +31,7 @@ namespace Service
 
         public IQueryable<DisplayDTO> GetDisplaysForMovie(long movieId, int? top)
         {
-            IQueryable<DisplayDTO> response = _displaysRepository.GetDisplaysForMovie(movieId).OrderBy(dis => dis.DisplayDate)
+            IQueryable<DisplayDTO> response = _displaysRepository.GetDisplaysForMovie(movieId).OrderByDescending(dis => dis.DisplayDate)
                 .ProjectTo<DisplayDTO>(_mapper.ConfigurationProvider);
 
             if (top.HasValue)
