@@ -64,5 +64,19 @@ namespace Service
 
             return _mapper.Map<MovieDTO>(_moviesRepository.InsertMovie(movieToAdd));
         }
+
+        public MovieDTO DisableMovie(long id)
+        {
+            Movie movieToEdit = _moviesRepository.GetSingleMovie(id).FirstOrDefault();
+
+            if (movieToEdit == null)
+            {
+                throw new System.Exception("Object not found");
+            }
+
+            movieToEdit.Active = false;
+
+            return _mapper.Map<MovieDTO>(_moviesRepository.PatchMovie(movieToEdit));
+        }
     }
 }

@@ -51,9 +51,9 @@ namespace MovieBase.Controllers
 
         // DELETE <MoviesController>/5
         [HttpDelete("{id}")]
-        public IActionResult Delete(long id)
+        public MovieDTO Delete(long id)
         {
-            return StatusCode(501);
+            return _movieService.DisableMovie(id);
         }
 
         private SourceTypeId CheckSourceType()
