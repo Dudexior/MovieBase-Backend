@@ -12,6 +12,7 @@ namespace DAL.Models
         public string Title { get; set; }
         public string Description { get; set; }
         public int Duration { get; set; }
+        public bool Active { get; set; }
 
         public ICollection<Display> Displays { get; set; }
         public MovieImage Image { get; set; }
