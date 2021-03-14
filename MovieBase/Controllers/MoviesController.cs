@@ -44,7 +44,7 @@ namespace MovieBase.Controllers
 
         // PATCH <MoviesController>/5
         [HttpPatch("{id}")]
-        public Movie Put(long id, [FromBody] MovieSimpleDTO movie)
+        public MovieDTO Patch(long id, [FromBody] MovieSimpleDTO movie)
         {
             return _movieService.EditMovie(id, movie);
         }

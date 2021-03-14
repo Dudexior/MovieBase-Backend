@@ -37,7 +37,7 @@ namespace Service
             return _moviesRepository.GetSingleMovie(id).ProjectTo<MovieDTO>(_mapper.ConfigurationProvider);
         }
 
-        public Movie EditMovie(long id, MovieSimpleDTO editedMovie)
+        public MovieDTO EditMovie(long id, MovieSimpleDTO editedMovie)
         {
             Movie movieToEdit = _moviesRepository.GetSingleMovie(id).FirstOrDefault();
 
@@ -50,9 +50,7 @@ namespace Service
             movieToEdit.Duration = editedMovie.Duration;
             movieToEdit.Title = editedMovie.Title;
 
-            _moviesRepository.PatchMovie(movieToEdit);
-
-            return movieToEdit;
+            return _mapper.Map<MovieDTO>(_moviesRepository.PatchMovie(movieToEdit));
         }
 
         public MovieDTO AddMovie(MovieSimpleDTO movie)
