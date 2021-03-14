@@ -36,5 +36,23 @@ namespace Service
             _displayService.AddDisplay(id, source);
             return _moviesRepository.GetSingleMovie(id).ProjectTo<MovieDTO>(_mapper.ConfigurationProvider);
         }
+
+        public Movie EditMovie(long id, MovieSimpleDTO editedMovie)
+        {
+            Movie movieToEdit = _moviesRepository.GetSingleMovie(id).FirstOrDefault();
+
+            if (movieToEdit == null)
+            {
+                throw new System.Exception("Object not found");
+            }
+
+            movieToEdit.Description = editedMovie.Description;
+            movieToEdit.Duration = editedMovie.Duration;
+            movieToEdit.Title = editedMovie.Title;
+
+            _moviesRepository.PatchMovie(movieToEdit);
+
+            return movieToEdit;
+        }
     }
 }
