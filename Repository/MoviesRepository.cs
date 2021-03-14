@@ -36,7 +36,7 @@ namespace Repository
 
         public Movie InsertMovie(Movie movieToAdd)
         {
-            var addedMovie = _dbContext.Movies.Add(movieToAdd);
+            _dbContext.Movies.Add(movieToAdd);
             _dbContext.SaveChanges();
 
             return movieToAdd;
