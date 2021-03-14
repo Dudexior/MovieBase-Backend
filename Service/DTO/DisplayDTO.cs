@@ -5,6 +5,9 @@ namespace Service.DTO
 {
     public class DisplayDTO
     {
+        // Default constructor is neaded for AutoMapper
+        public DisplayDTO(){}
+
         public DisplayDTO(long movieId, SourceTypeId source)
         {
             MovieId = movieId;
