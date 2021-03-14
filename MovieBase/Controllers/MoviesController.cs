@@ -37,9 +37,9 @@ namespace MovieBase.Controllers
 
         // POST <MoviesController>
         [HttpPost]
-        public IActionResult Post([FromBody] MovieDTO movie)
+        public MovieDTO Post([FromBody] MovieSimpleDTO movie)
         {
-            return StatusCode(501);
+            return _movieService.AddMovie(movie);
         }
 
         // PATCH <MoviesController>/5
