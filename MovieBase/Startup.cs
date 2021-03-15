@@ -35,6 +35,14 @@ namespace MovieBase
             services.AddDbContext<MovieBaseContext>(opts => opts.UseSqlServer(Configuration["ConnectionString:MovieBaseLocal"]));
             services.AddControllers();
 
+            services.AddCors(opt =>
+            {
+                opt.AddDefaultPolicy(builder =>
+                {
+                    builder.WithOrigins("http://localhost:4200");
+                });
+            });
+
             services.AddTransient<IMoviesRepository, MoviesRepository>();
             services.AddTransient<IDisplaysRepository, DisplaysRepository>();
             services.AddTransient<IMovieService, MovieService>();
@@ -54,6 +62,8 @@ namespace MovieBase
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseCors();
 
             app.UseEndpoints(endpoints =>
             {
