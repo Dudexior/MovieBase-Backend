@@ -59,7 +59,8 @@ namespace Service
             {
                 Title = movie.Title,
                 Description = movie.Description,
-                Duration = movie.Duration
+                Duration = movie.Duration,
+                Active = true
             };
 
             return _mapper.Map<MovieDTO>(_moviesRepository.InsertMovie(movieToAdd));
