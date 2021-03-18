@@ -39,7 +39,7 @@ namespace MovieBase
             {
                 opt.AddDefaultPolicy(builder =>
                 {
-                    builder.WithOrigins("http://localhost:4200");
+                    builder.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader();
                 });
             });
 
@@ -57,13 +57,13 @@ namespace MovieBase
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
-
             app.UseRouting();
 
             app.UseAuthorization();
 
             app.UseCors();
+
+            app.UseHttpsRedirection();
 
             app.UseEndpoints(endpoints =>
             {
