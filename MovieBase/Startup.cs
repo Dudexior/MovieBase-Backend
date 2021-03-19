@@ -32,7 +32,7 @@ namespace MovieBase
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<MovieBaseContext>(opts => opts.UseSqlServer(Configuration["ConnectionString:MovieBaseAzure"]));
+            services.AddDbContext<MovieBaseContext>(opts => opts.UseSqlServer(Configuration["ConnectionString:MovieBaseLocal"]));
             services.AddControllers();
 
             services.AddCors(opt =>
