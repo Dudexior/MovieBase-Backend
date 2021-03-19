@@ -5,6 +5,7 @@ using Repository.Interfaces;
 using Service.DTO;
 using Service.Interfaces;
 using System.Linq;
+using System.Text;
 
 namespace Service
 {
@@ -12,8 +13,9 @@ namespace Service
     {
         private readonly IMoviesRepository _moviesRepository;
         private readonly IDisplayService _displayService;
+        private readonly IImagesRepository _imagesRepository;
         private readonly IMapper _mapper;
-        public MovieService(IMoviesRepository moviesRepository, IDisplayService displayService)
+        public MovieService(IMoviesRepository moviesRepository, IDisplayService displayService, IImagesRepository imagesRepository)
         {
             var config = new MapperConfiguration(cfg =>
               cfg.CreateMap<Movie, MovieDTO>()
@@ -22,6 +24,8 @@ namespace Service
 
             _moviesRepository = moviesRepository;
             _displayService = displayService;
+            _imagesRepository = imagesRepository;
+
             _mapper = new Mapper(config);
         }
 
@@ -49,6 +53,41 @@ namespace Service
             movieToEdit.Description = editedMovie.Description;
             movieToEdit.Duration = editedMovie.Duration;
             movieToEdit.Title = editedMovie.Title;
+
+            return _mapper.Map<MovieDTO>(_moviesRepository.PatchMovie(movieToEdit));
+        }
+
+        public MovieDTO EditMovieImage(long id, byte[] imageBytes)
+        {
+            Movie movieToEdit = _moviesRepository.GetSingleMovie(id).FirstOrDefault();
+
+            if (movieToEdit == null)
+            {
+                throw new System.Exception("Object not found");
+            }
+
+
+            MovieImage editedImage = _imagesRepository.getImages().Where(p => p.MovieId == id).FirstOrDefault();
+
+            if(editedImage == null)
+            {
+                MovieImage imageToInsert = new MovieImage()
+                {
+                    MovieId = id,
+                    Image = imageBytes
+                };
+
+                editedImage =_imagesRepository.InsertImage(imageToInsert);
+            }
+            else
+            {
+                MovieImage imageToEdit = movieToEdit.Image;
+                imageToEdit.Image = imageBytes;
+
+                editedImage = _imagesRepository.UpdateImage(imageToEdit);
+            }
+
+            movieToEdit.Image = editedImage;
 
             return _mapper.Map<MovieDTO>(_moviesRepository.PatchMovie(movieToEdit));
         }
