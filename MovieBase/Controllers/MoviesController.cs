@@ -1,9 +1,11 @@
 ﻿using DAL.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Service.DTO;
 using Service.Interfaces;
 using System;
 using System.Linq;
+using System.Net.Http;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -47,6 +49,19 @@ namespace MovieBase.Controllers
         public MovieDTO Patch(long id, [FromBody] MovieSimpleDTO movie)
         {
             return _movieService.EditMovie(id, movie);
+        }
+
+        // PATCH <MoviesController>/5/Image
+        [HttpPatch("{id}/Image")]
+        public MovieDTO Patch(long id, [FromForm] IFormFile file)
+        {
+            long length = file.Length;
+
+            using var fileStream = file.OpenReadStream();
+            byte[] bytes = new byte[length];
+            fileStream.Read(bytes, 0, (int)file.Length);
+
+            return _movieService.EditMovieImage(id, bytes);
         }
 
         // DELETE <MoviesController>/5
