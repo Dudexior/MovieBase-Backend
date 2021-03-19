@@ -39,7 +39,8 @@ namespace MovieBase
             {
                 opt.AddDefaultPolicy(builder =>
                 {
-                    builder.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader();
+                    builder.WithOrigins("http://localhost:4200", "http://moviebase.tomczakd.pl", "https://moviebase.tomczakd.pl")
+                    .AllowAnyMethod().AllowAnyHeader();
                 });
             });
 
