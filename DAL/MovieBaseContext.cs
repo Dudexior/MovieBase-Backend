@@ -24,6 +24,7 @@ namespace DAL
             var MoviesEntity = modelBuilder.Entity<Movie>();
             var DisplaysEntity = modelBuilder.Entity<Display>();
             var SourceTypesEntity = modelBuilder.Entity<SourceType>();
+            var ImagesEntity = modelBuilder.Entity<MovieImage>();
 
             DisplaysEntity
                 .Property(p => p.SourceTypeId).HasConversion<int>();

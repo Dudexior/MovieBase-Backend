@@ -10,5 +10,7 @@ namespace DAL.Models
     {
         public long Id { get; set; }
         public byte[] Image { get; set; }
+
+        public long MovieId { get; set; }
     }
 }

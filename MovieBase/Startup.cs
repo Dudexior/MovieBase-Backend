@@ -32,7 +32,7 @@ namespace MovieBase
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<MovieBaseContext>(opts => opts.UseSqlServer(Configuration["ConnectionString:MovieBaseLocal"]));
+            services.AddDbContext<MovieBaseContext>(opts => opts.UseSqlServer(Configuration["ConnectionString:MovieBaseAzure"]));
             services.AddControllers();
 
             services.AddCors(opt =>
@@ -47,6 +47,7 @@ namespace MovieBase
             services.AddTransient<IDisplaysRepository, DisplaysRepository>();
             services.AddTransient<IMovieService, MovieService>();
             services.AddTransient<IDisplayService, DisplayService>();
+            services.AddTransient<IImagesRepository, ImagesRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
